@@ -29,9 +29,8 @@ jobs:
         run: |
           pack build ${{ secrets.DOCKERHUB_USERNAME }}/webtraffic:latest \
             --builder heroku/builder:24 \
-            --env BP_KEEP_FILES="*.yaml" \
+            --buildpack heroku/go \
             --env CGO_ENABLED=0 \
-            --env GOARCH=arm64 \
-            --env GOOS=linux \
             --platform=linux/arm64 \
+            --creation-time now \
             --publish
